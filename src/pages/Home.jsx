@@ -24,7 +24,7 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h2 className="text-2xl font-bold hover:text-gray-500">
-                                log in to seee the posts
+                                log in to seee the posts .As i am using the free version . "https://blog-app-git-main-saptarshi-nandis-projects.vercel.app/" only work other links does't support the CORS
                             </h2>
                         </div>
                     </div>
