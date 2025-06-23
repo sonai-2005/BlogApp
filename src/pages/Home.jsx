@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/config'
 import { Container,PostCard} from '../components'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 
 function Home() {
@@ -27,6 +29,9 @@ function Home() {
                                 log in to seee the posts .As i am using the free version . "https://blog-app-git-main-saptarshi-nandis-projects.vercel.app/" only work other links does't support the CORS
                             </h2>
                         </div>
+                        <Link
+                        to={"https://blog-app-git-main-saptarshi-nandis-projects.vercel.app/"}
+                        ><h2>click here to go there</h2></Link>
                     </div>
                 </Container>
             </div>
