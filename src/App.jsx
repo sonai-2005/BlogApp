@@ -14,28 +14,38 @@ function App() {
         authservice.getCurrentUser()
             .then((userData) => {
                 if (userData) {
-                    dispatch(login( userData ));
+                    dispatch(login(userData));
                 } else {
                     dispatch(logout());
                 }
             })
             .finally(() => setloading(false));
     }, []);
-        if (loading) {
-        return <div className="text-white text-center mt-20">Loading...</div>; // ⚠️ do not return null
+    if (loading) {
+        return (
+            <div className="w-full py-8 flex justify-center items-center min-h-[200px]">
+                <div className="relative w-17 h-17">
+                    <div className="absolute inset-0 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 flex items-center justify-center text-xs font-medium">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+
+        )
     }
     else
         return (
-        <div className='min-h-screen w-xl flex flex-wrap content-between bg-gray-500'>
-            <div className='w-full block'>
-                <Header />
-                <main>
-                    <Outlet /> {/* ✅ This renders your Login/Signup/Home/etc */}
-                </main>
-                <Footer />
+            <div className='min-h-screen w-xl flex flex-wrap content-between bg-gray-500'>
+                <div className='w-full block'>
+                    <Header />
+                    <main>
+                        <Outlet /> {/* ✅ This renders your Login/Signup/Home/etc */}
+                    </main>
+                    <Footer />
+                </div>
             </div>
-        </div>
-    )
+        )
 }
 
 export default App;

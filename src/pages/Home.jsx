@@ -32,21 +32,22 @@ function Home() {
             </div>
         )}
         else if(loading){
-        return (
-            <div className="w-full py-8 text-center text-white text-xl">
-                Loading...
-            </div>
+        return (//loader...
+           <div className="w-full py-8 flex justify-center items-center min-h-[200px]">
+  <div className="border-4 border-gray-300 border-t-black w-12 h-12 rounded-full animate-spin"></div>
+</div>     
         );
     }
         return (
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
-                    {posts.map((post) => (
+                    {/* {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-1/4'>
                             <PostCard {...post} />
                         </div>
-                    ))}
+                    ))} */}
+                    <h2>actually i have not found anything to show in the home now. After new idea i will develop that . For now you can click in the 'all posts' to watch the posts and on the add post to add your favour post</h2>
                 </div>
             </Container>
         </div>

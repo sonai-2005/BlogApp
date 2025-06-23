@@ -15,9 +15,10 @@ function AllPost() {
     
     if (loading) {
         return (
-            <div className="w-full py-8 text-center text-white text-xl">
-                Loading...
-            </div>
+            <div className="w-full py-8 flex justify-center items-center min-h-[200px]">
+  <div className="border-4 border-gray-300 border-t-black w-12 h-12 rounded-full animate-spin"></div>
+</div>
+
         );
     }
 

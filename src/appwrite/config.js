@@ -6,7 +6,7 @@ export class Service {
     bucket;
 
     constructor() {
-        console.log("Appwrite URL:", conf.appWriteUrl);
+//        console.log("Appwrite URL:", conf.appWriteUrl);
 
         this.client
             .setEndpoint(conf.appWriteUrl)

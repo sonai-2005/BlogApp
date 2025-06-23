@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Post() {
     const [post, setPost] = useState(null);
+    const [loading , setloading] = useState(true);
     const { slug } = useParams();
     const navigate = useNavigate();
 
@@ -16,10 +17,13 @@ export default function Post() {
 
     useEffect(() => {
         if (slug) {
+            
             appwriteService.getPost(slug).then((post) => {
+                if(post.featureImages)setloading(false);
                 if (post) {setPost(post);
-                console.log(post.featureImages);
-                console.log(appwriteService.filePreview(post.featureImages));
+                
+               // console.log(post.featureImages);
+              //  console.log(appwriteService.filePreview(post.featureImages));
                 }
                 else navigate("/");
             });
@@ -34,19 +38,53 @@ export default function Post() {
             }
         });
     };
-
-    return post ? (
-        <div className="py-8">
-            <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
+    const loader=()=>{
+        if(!loading)return(<div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                     <img
                         src={appwriteService.filePreview(post.featureImages)}
                         alt={post.title}
                         className="rounded-xl"
                     />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                   
+                </div>)
+        else return(
+            <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                     <div className="border-4 border-gray-300 border-t-black w-12 h-12 rounded-full animate-spin flex items-center justify-center">
+  <span className="sr-only">Loading...</span>
+</div>
+
+
+
+                   
+                </div>
+        )
+        
+    }
+    return post ? (
+        <div>
+        <div className="py-8">
+            <Container>
+                {/*<div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                     <img
+                        src={appwriteService.filePreview(post.featureImages)}
+                        alt={post.title}
+                        className="rounded-xl"
+                    />
+
+                   
+                </div> */}
+                {loader()}
+                <div className="w-full mb-6">
+                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                </div>
+                <div className="browser-css">
+                    {parse(post.content)}
+                    </div>
+            </Container>
+        </div>
+         {isAuthor && (
+                        <div className="m-5">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button bgColor="bg-green-500" className="mr-3">
                                     Edit
@@ -57,14 +95,6 @@ export default function Post() {
                             </Button>
                         </div>
                     )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                </div>
-                <div className="browser-css">
-                    {parse(post.content)}
-                    </div>
-            </Container>
         </div>
     ) : null;
 }

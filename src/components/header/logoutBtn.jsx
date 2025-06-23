@@ -5,7 +5,7 @@ import { logout } from '../../store/authSlice'
 import { useNavigate } from 'react-router-dom'
 
 function LogoutBtn() {
-    const nagivate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const logoutHandler = ()=>{
         authService.logout()
