@@ -2,7 +2,7 @@
 
 A full-stack blog web application built with **React**, **Appwrite**, and **Tailwind CSS** — allowing users to create, edit, and read blog posts with authentication.
 
-🔗 **Live Project**: [Click Here to Visit](https://blog-app-git-main-saptarshi-nandis-projects.vercel.app/login)
+🔗 **Live Project**: [Click Here to Visit](https://blog-app-git-main-saptarshi-nandis-projects.vercel.app)
 
 ---
 
